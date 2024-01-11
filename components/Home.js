@@ -1,13 +1,16 @@
 import React from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { workouts } from '../utils/exercises';
 
 export default function Home() {
     //display streak, stats, choose plan / continue plan, generate workout
 
-    //choose a training plan || start / continue with training plan || change training plan
+    //choose a training plan || start / continue with training plan + current stats in training plan + next workout + all that stuff || change training plan
 
     //browse the training plans in little 2x2 grid of squares
+
+    // const []
 
     let trainingPlans = {
         '🧪 Bro Split': {
@@ -21,6 +24,7 @@ export default function Home() {
         }
 
     }
+
     return (
         <>
             <View style={[styles.flexCol, { padding: 10, backgroundColor: '#eff6ff', borderRadius: 10 }]}>
@@ -88,6 +92,15 @@ export default function Home() {
                             </View>
                             <Text style={[styles.text, { fontSize: 14, color: '#f472b6', }]}>&rarr; Select the workout you wish to endure.</Text>
                         </View>
+                        <View style={[styles.flexRow, { flexWrap: 'wrap', gap: 6 }]}>
+                            {Object.keys(workouts).map((workout, workoutIndex) => {
+                                return (
+                                    <TouchableOpacity key={workoutIndex}>
+                                        <Text style={[styles.text, { textTransform: 'capitalize', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 6, borderWidth: 1, borderColor: '#fbcfe8', color: workoutIndex === 0 ? 'white' : '#f472b6', backgroundColor: workoutIndex === 0 ? '#f472b6' : 'white' }]}>{workout.replaceAll('_', ' ')}</Text>
+                                    </TouchableOpacity>
+                                )
+                            })}
+                        </View>
                     </View>
                     <View style={[styles.flexCol, { flex: 1, gap: 10, borderColor: 'white', padding: 10, borderBottomWidth: 2, }]}>
                         <View style={[styles.flexCol]}>
@@ -97,14 +110,36 @@ export default function Home() {
                             </View>
                             <Text style={[styles.text, { fontSize: 14, color: '#f472b6', }]}>&rarr; Select the muscles judged for annihilation.</Text>
                         </View>
+                        <View style={[styles.flexRow, { flexWrap: 'wrap', gap: 6 }]}>
+                            {(workouts?.['individual'] || []).map((muscleGroup, muscleGroupIndex) => {
+                                return (
+                                    <TouchableOpacity key={muscleGroupIndex}>
+                                        <Text style={[styles.text, { textTransform: 'capitalize', paddingHorizontal: 6, paddingVertical: 4, borderRadius: 6, borderWidth: 1, borderColor: '#fbcfe8', color: muscleGroupIndex === 0 ? 'white' : '#f472b6', backgroundColor: muscleGroupIndex === 0 ? '#f472b6' : 'white' }]}>{muscleGroup.replaceAll('_', ' ')}</Text>
+                                    </TouchableOpacity>
+                                )
+                            })}
+                        </View>
                     </View>
                     <View style={[styles.flexCol, { flex: 1, gap: 10, borderColor: 'white', padding: 10, borderBottomWidth: 2, }]}>
                         <View style={[styles.flexCol]}>
                             <View style={[styles.flexRow, { gap: 10, alignItems: 'flex-end' }]}>
-                                <Text style={[styles.text, styles.headerText, { fontSize: 24, color: '#fbcfe8', }]}>02</Text>
+                                <Text style={[styles.text, styles.headerText, { fontSize: 24, color: '#fbcfe8', }]}>03</Text>
                                 <Text style={[styles.text, { fontSize: 22, color: '#f472b6', }]}>Become juggernaut</Text>
                             </View>
                             <Text style={[styles.text, { fontSize: 14, color: '#f472b6', }]}>&rarr; Select your ultimate objective.</Text>
+                        </View>
+                        <View style={[styles.flexCol]}>
+                            <View style={[styles.flexRow]}>
+                                <Text style={[styles.text, { color: '#f472b6', fontSize: 14, }]}>Strength</Text>
+                                <Text style={[styles.text, { color: '#f472b6', fontSize: 14, flex: 1, textAlign: 'center' }]}>Growth</Text>
+                                <Text style={[styles.text, { color: '#f472b6', fontSize: 14, }]}>Endurance</Text>
+                            </View>
+                            <TouchableOpacity onPress={(e) => {
+                                console.log(e.nativeEvent.locationX, )
+                            }} activeOpacity={1} style={[{ borderWidth: 1, borderColor: '#fbcfe8', backgroundColor: 'white', height: 34, borderRadius: 6, position: 'relative', }]}>
+                                <View style={[{ width: 2, backgroundColor: '#f472b6', borderRadius: 2, position: 'absolute', top: 4, bottom: 4, transform: [{ translateX: -1.5, }], left: '50%' || '50%' }]}></View>
+
+                            </TouchableOpacity>
                         </View>
                     </View>
 
@@ -139,8 +174,8 @@ export const styles = StyleSheet.create({
 
 
 //color combos
-//#34d399 && #ecfdf5 
-//#eff6ff && #60a5fa
+//#34d399 && #ecfdf5 green
+//#eff6ff && #60a5fa blue
 //#f472b6 && #fae8ff pink
 //#facc15 && #fefce8 yellow
 //#94a3b8 && #f0f9ff grey
