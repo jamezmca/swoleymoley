@@ -1,3 +1,21 @@
+let trainingPlans = {
+    '🧪 Bro Split': {
+        description: 'A balanced 5 day cycle of chest + shoulders, back + shoulders, quads + calves, tris + bis & glutes + hammies.',
+        split: [['chest', 'shoulders'], ['back', 'shoulders'], ['quads', 'calves'], ['triceps', 'biceps'], ['hamstrings', 'glutes']],
+        preferences: []
+    },
+    '🍑 Glutelicious': {
+        description: 'A leg dominant training plan to prioritise the growth of your glutes, quads and hammies for volumptious legs, abs & core, and a hint of upper body.',
+        split: [['quads', 'glutes'], ['back', 'shoulders', 'abs'], ['hamstrings', 'glutes'], ['abs', 'glutes', 'calves']],
+        preferences: []
+    },
+    '⚡️ Bodyweight': {
+        description: 'Build a physique with your body weight alone - great for getting started with training or developing an extremely athletic physique.',
+        split: [['chest', 'shoulders', 'triceps'], ['back', 'abs', 'biceps'], ['quads', 'hamstrings', 'calves']],
+        preferences: ['home']
+    }
+}
+
 const tempos = ['3 0 2', '2 2 2', '4 1 1', '5 3 1', '1 0 1', '3 2 1', '2 1 1']
 
 const schemes = {
@@ -1148,7 +1166,7 @@ const exercises = {
         },
         unit: 'reps', //vs duration    
         muscles: ['glutes'],
-        description: 'With your back rest on an elevated surface, or on the ground, and your knees bent to appoximately 90 degrees, thrust your hips forward and tuck your chin. Without moving your heels, try to pull them back towards your bum throughout the motion.',
+        description: 'With your back resting on an elevated surface, or on the ground, and your knees bent to appoximately 90 degrees, thrust your hips forward and tuck your chin. Without moving your heels, try to pull them back towards your bum throughout the motion.',
         substitutes: ['unilateral hip thrusts']
     },
     unilateral_hip_thrusts: {
@@ -1160,7 +1178,7 @@ const exercises = {
         },
         unit: 'reps', //vs duration    
         muscles: ['glutes'],
-        description: 'With your back rest on an elevated surface, or on the ground, and one knee bent to appoximately 90 degrees (the ohter leg extended), thrust your hips forward and tuck your chin. Without moving your heel, try to pull them back towards your bum throughout the motion.',
+        description: 'With your back resting on an elevated surface, or on the ground, and one knee bent to appoximately 90 degrees (the ohter leg extended), thrust your hips forward and tuck your chin. Without moving your heel, try to pull them back towards your bum throughout the motion.',
         substitutes: ['cable kickbacks']
     },
     deadlift: {
@@ -1764,4 +1782,4 @@ const exercises = {
 
 
 
-module.exports = { tempos, workouts, exercises, schemes }
+module.exports = { tempos, workouts, exercises, schemes, trainingPlans }
