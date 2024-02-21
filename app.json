@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "swoleymoley",
+    "name": "Swoley Moley",
     "slug": "swoleymoley",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -18,13 +18,20 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.swoleymoley",
+      "versionCode": 2,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FEFEFE"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0b3bf55f-69e9-4c8f-af79-7108bdf52c01"
+      }
     }
   }
 }

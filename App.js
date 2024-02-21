@@ -45,7 +45,7 @@ export default function App() {
     let scheme = Math.random() < 0.75 ? 'growthHypertrophy' : 'cardiovascularEndurance'
     let plan_cycle_day = plan.day % trainingPlans[plan.plan].split.length
     let plan_muscles = trainingPlans[plan.plan].split[plan_cycle_day]
-    let new_workout = generateWorkout({ muscles: plan_muscles, workout: 'individual', scheme })
+    let new_workout = generateWorkout({ muscles: plan_muscles, workout: 'individual', scheme, bw: plan.plan === '⚡️ Bodyweight' })
     await AsyncStorage.setItem('swoley-workout', JSON.stringify({ wod: new_workout, muscles: plan_muscles, workout: 'individual', plan }))
     setWod(new_workout)
     setView(1)
@@ -115,7 +115,7 @@ export default function App() {
       <ScrollView >
         <View style={styles.viewContainer}>
           {view === 0 && <Home handleStartPlanWorkout={handleStartPlanWorkout} numWorkouts={numWorkouts} handleSetWOD={handleSetWOD} toggleMuscles={toggleMuscles} workout={workout} setWorkout={setWorkout} muscles={muscles} leftDecimal={leftDecimal} handleSetPlan={handleSetPlan} setLeftDecimal={setLeftDecimal} plan={plan} setPlan={setPlan} planDay={planDay} setPlanDay={setPlanDay} />}
-          {view === 1 && <Training plan={plan} setPlan={setPlan} wod={wod} workout={workout} muscles={muscles} setView={setView} />}
+          {view === 1 && <Training setNumWorkouts={setNumWorkouts} plan={plan} setPlan={setPlan} wod={wod} workout={workout} muscles={muscles} setView={setView} />}
           {view === 2 && <Preferences setWod={setWod} setView={setView} setMuscles={setMuscles} setWorkout={setWorkout} />}
         </View>
       </ScrollView>

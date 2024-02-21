@@ -32,7 +32,7 @@ export default function PlanTracker(props) {
                 <View style={[{ width: 2, backgroundColor: 'white' }]}></View>
                 <View style={[styles.flexCol, { flex: 2, padding: 10 }]}>
                     <Text style={[styles.text, { fontSize: 14, color: '#818cf8', }]}>Next Workout  </Text>
-                    <Text style={[styles.text, { fontSize: 20, color: '#818cf8', textTransform: 'capitalize' }]}>{trainingPlans[plan.plan].split[parseInt(plan.day)].join(' + ')}</Text>
+                    <Text style={[styles.text, { fontSize: 20, color: '#818cf8', textTransform: 'capitalize' }]}>{trainingPlans[plan.plan].split[parseInt(plan.day % trainingPlans[plan.plan].split.length)].join(' + ')}</Text>
                 </View>
             </View>
             <TouchableOpacity onPress={handleStartPlanWorkout} activeOpacity={0.5} style={[styles.flexRow, { gap: 10, borderColor: 'white', padding: 10, borderTopWidth: 2, justifyContent: 'space-between' }]}>

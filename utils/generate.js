@@ -2,9 +2,11 @@ import { exercises, workouts, tempos, schemes } from "./exercises.js"
 const flattenedExercises = exercisesFlattener(exercises)
 
 export function generateWorkout(args) {
-    const { muscles, workout, scheme } = args
+    const { muscles, workout, scheme, bw } = args
     let exer = Object.keys(flattenedExercises);
-    exer = exer.filter((key) => flattenedExercises[key].meta.environment !== "home");
+    exer = exer.filter((key) => {
+        return bw ? flattenedExercises[key].meta.environment.includes("home") : flattenedExercises[key].meta.environment !== "home"
+    });
     let includedTracker = [];
     let numSets = 5;
     let listOfMuscles;

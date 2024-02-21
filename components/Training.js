@@ -88,7 +88,7 @@ function DetailBox(props) {
 }
 
 export default function Training(props) {
-    const { wod, setView, setPlan, plan } = props
+    const { wod, setView, setPlan, plan, setNumWorkouts } = props
     const [selectedExercise, setSelectedExercise] = useState(0)
     const [setCount, setSetCount] = useState({})
     const [showInformation, setShowInformation] = useState(false)
@@ -149,11 +149,12 @@ export default function Training(props) {
             history_arr = []
         }
 
-        history_arr = [...history_arr, saved_data_obj]
+        history_arr = [saved_data_obj, ...history_arr]
 
         // save length  to a count state separately 
         await AsyncStorage.setItem('swoley-history', JSON.stringify({ history_arr }))
         await AsyncStorage.setItem('swoley-history-count', JSON.stringify({ count: history_arr.length }))
+        setNumWorkouts(curr => curr + 1)
         setView(0)
     }
 
@@ -275,6 +276,9 @@ export default function Training(props) {
                         </Text>
                         <Text style={[styles.text, { color: '#f472b6' }]}>
                             To complete a workout and save it to your training logs, you must first complete all the sets for every exercise!
+                        </Text>
+                        <Text style={[styles.text, { color: '#f472b6' }]}>
+                            Finally, if you're training at home, it's helpful to have a set of exercise bands and some small dumbbells if possible.
                         </Text>
                     </>
                 )}
